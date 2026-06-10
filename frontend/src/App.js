@@ -233,14 +233,14 @@ const SlamboxLanding = () => {
             Ready to Enter <span className="gold-text">The Arena?</span>
           </h2>
           <p className="cta-subtitle">
-            Join the movement of the next evolution in sport.
+            Join the next evolution in sport.
           </p>
           <div className="cta-buttons">
             <Button className="cta-primary" size="lg">
               Enter the Bunker
             </Button>
             <Button className="cta-secondary" size="lg" variant="outline">
-              JOIN THE MOVEMENT
+              LET'S GET IT IN
             </Button>
           </div>
         </div>

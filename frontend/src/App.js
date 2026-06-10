@@ -1,19 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { Button } from './components/ui/button';
-import { Shield, Target, Zap, Trophy, ChevronDown, Volume2, VolumeX } from 'lucide-react';
+import { Shield, Target, Zap, Trophy, Volume2, VolumeX, Play } from 'lucide-react';
 
 const SlamboxLanding = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const videoRef = useRef(null);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -27,93 +19,81 @@ const SlamboxLanding = () => {
     }
   };
 
-  const scrollToContent = () => {
-    document.getElementById('lead-section').scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <div className="slambox-container">
+    <div className="slambox-hud">
       {/* Audio Element */}
       <audio 
         ref={audioRef} 
         src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/daf8489b969f4a4ab139792d5e35986e_slambox_pitch_v2_1_corrected.mp3"
         onEnded={() => setIsPlaying(false)}
-        volume={0.7}
       />
-      
-      {/* Hero Section with Video Background */}
-      <section className="hero-section">
-        <div className="video-background">
+
+      {/* Header */}
+      <header className="hud-header">
+        <div className="header-container">
+          <div className="logo-group">
+            <img
+              src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
+              alt="Slambox Shield"
+              className="header-logo"
+            />
+            <span className="header-title">SLAMBOX</span>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="hero-hud">
+        <div className="hero-video-container">
           <video
-            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            className="hero-video"
+            className="hero-video-hud"
           >
             <source
               src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/8589da14edcd4302ac9706581eb0b8b6_slambox_v7_authentic.mp4"
               type="video/mp4"
             />
           </video>
-          <div className="video-overlay"></div>
+          <div className="hero-overlay-hud"></div>
         </div>
-
-        <header className="site-header">
-          <div className="header-content">
-            <img
-              src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
-              alt="Slambox Shield"
-              className="logo-shield"
-            />
-            <h1 className="logo-text">SLAMBOX</h1>
-          </div>
-        </header>
-
-        <div className="hero-content">
-          <div className="hero-text-container">
-            <h1 className="hero-title">
-              <span className="title-line">THE NEXT</span>
-              <span className="title-line gold-text">EVOLUTION</span>
-              <span className="title-line">OF BASKETBALL</span>
-            </h1>
-            <p className="hero-subtitle">High-flying. Relentless. Revolutionary.</p>
-            <div className="hero-actions">
-              <Button
-                onClick={scrollToContent}
-                className="hero-cta"
-                size="lg"
-              >
-                <ChevronDown className="bounce-icon" />
-                <span>Discover The Game</span>
-              </Button>
-              <Button
-                onClick={toggleAudio}
-                className={`audio-cta ${isPlaying ? 'playing' : ''}`}
-                size="lg"
-                variant="outline"
-              >
-                {isPlaying ? <VolumeX size={24} /> : <Volume2 size={24} />}
-                <span>{isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}</span>
-              </Button>
-            </div>
+        <div className="hero-content-hud">
+          <img
+            src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
+            alt="Slambox Shield"
+            className="hero-logo-large"
+          />
+          <h1 className="hero-title-hud">
+            THE NEXT EVOLUTION OF BASKETBALL
+          </h1>
+          <p className="hero-subtitle-hud">High-flying. Relentless. Revolutionary.</p>
+          <div className="hero-buttons-hud">
+            <Button className="btn-primary-blue">
+              <Play size={20} />
+              Enter the Bunker
+            </Button>
+            <Button 
+              className={`btn-audio-red ${isPlaying ? 'playing' : ''}`}
+              onClick={toggleAudio}
+            >
+              {isPlaying ? <VolumeX size={20} /> : <Volume2 size={20} />}
+              {isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* The Lead Section */}
-      <section id="lead-section" className="lead-section">
-        <div className="section-container">
-          <div className="lead-content fade-in-up">
-            <Shield className="section-icon" size={64} />
-            <h2 className="section-title">
-              Welcome to <span className="gold-text">Slambox</span>
+      {/* Lead Section */}
+      <section className="lead-hud">
+        <div className="container-hud">
+          <div className="lead-content-hud">
+            <Shield className="icon-red" size={48} />
+            <h2 className="section-title-hud">
+              Welcome to <span className="text-red">Slambox</span>
             </h2>
-            <p className="lead-text">
-              The Next Evolution of Basketball.
-            </p>
-            <p className="lead-description">
+            <p className="section-description-hud">
               Where racquetball court geometry meets the explosive power of professional basketball.
               A revolutionary sport engineered for maximum intensity, strategic brilliance, and aerial dominance.
             </p>
@@ -121,52 +101,52 @@ const SlamboxLanding = () => {
         </div>
       </section>
 
-      {/* The Rules Section */}
-      <section className="rules-section">
-        <div className="section-container">
-          <h2 className="section-title fade-in-up">
-            Rules of <span className="gold-text">Gameplay</span>
+      {/* Rules Section */}
+      <section className="rules-hud">
+        <div className="container-hud">
+          <h2 className="section-title-hud text-center">
+            Rules of <span className="text-blue">Gameplay</span>
           </h2>
-          <div className="rules-grid">
-            <div className="rule-card fade-in-up delay-1">
-              <div className="rule-icon-wrapper">
-                <Target size={40} />
+          <div className="cards-grid">
+            <div className="card-hud">
+              <div className="card-icon-hud bg-red">
+                <Target size={32} strokeWidth={2.5} />
               </div>
-              <h3 className="rule-title">The Court</h3>
-              <p className="rule-description">
+              <h3 className="card-title-hud">The Court</h3>
+              <p className="card-description-hud">
                 Enclosed racquetball court geometry creates a high-intensity arena.
                 Every wall is in play. Every angle is strategic.
               </p>
             </div>
 
-            <div className="rule-card fade-in-up delay-2">
-              <div className="rule-icon-wrapper">
-                <Trophy size={40} />
+            <div className="card-hud">
+              <div className="card-icon-hud bg-blue">
+                <Trophy size={32} strokeWidth={2.5} />
               </div>
-              <h3 className="rule-title">The Goal</h3>
-              <p className="rule-description">
+              <h3 className="card-title-hud">The Goal</h3>
+              <p className="card-description-hud">
                 An 8-foot professional rim permanently bolted to the back wall.
                 Precision meets power at the ultimate target.
               </p>
             </div>
 
-            <div className="rule-card fade-in-up delay-3">
-              <div className="rule-icon-wrapper">
-                <Zap size={40} />
+            <div className="card-hud">
+              <div className="card-icon-hud bg-red">
+                <Zap size={32} strokeWidth={2.5} />
               </div>
-              <h3 className="rule-title">The Mechanics</h3>
-              <p className="rule-description">
+              <h3 className="card-title-hud">The Mechanics</h3>
+              <p className="card-description-hud">
                 Strategic bank shots off side walls. Mid-air alley-oops.
                 Chess meets combat in every possession.
               </p>
             </div>
 
-            <div className="rule-card fade-in-up delay-4">
-              <div className="rule-icon-wrapper">
-                <Shield size={40} />
+            <div className="card-hud">
+              <div className="card-icon-hud bg-blue">
+                <Shield size={32} strokeWidth={2.5} />
               </div>
-              <h3 className="rule-title">The Action</h3>
-              <p className="rule-description">
+              <h3 className="card-title-hud">The Action</h3>
+              <p className="card-description-hud">
                 High-flying dunks and relentless short-form intensity.
                 Pure athletic dominance in every second.
               </p>
@@ -175,48 +155,40 @@ const SlamboxLanding = () => {
         </div>
       </section>
 
-      {/* The Triumvirate Section */}
-      <section className="triumvirate-section">
-        <div className="section-container">
-          <h2 className="section-title fade-in-up">
-            The <span className="gold-text">Triumvirate</span>
+      {/* Triumvirate Section */}
+      <section className="triumvirate-hud">
+        <div className="container-hud">
+          <h2 className="section-title-hud text-center">
+            The <span className="text-red">Triumvirate</span>
           </h2>
-          <p className="section-subtitle fade-in-up">
-            Visionaries Engineering the Future of Sport
-          </p>
-
-          <div className="triumvirate-grid">
-            <div className="triumvirate-card fade-in-up delay-1">
-              <div className="card-header">
-                <div className="member-initial">A</div>
-              </div>
-              <h3 className="member-name">Anthony Hatchett</h3>
-              <p className="member-role">Strategy Architect</p>
-              <p className="member-description">
+          <p className="section-subtitle-hud">Visionaries Engineering the Future of Sport</p>
+          
+          <div className="cards-grid">
+            <div className="card-hud">
+              <div className="member-avatar bg-red">A</div>
+              <h3 className="card-title-hud">Anthony Hatchett</h3>
+              <p className="member-role-hud">Strategy Architect</p>
+              <p className="card-description-hud">
                 The mastermind behind the tactical framework. Transforming raw athletic potential
                 into codified competitive excellence.
               </p>
             </div>
 
-            <div className="triumvirate-card fade-in-up delay-2">
-              <div className="card-header">
-                <div className="member-initial">S</div>
-              </div>
-              <h3 className="member-name">Steven Campbell</h3>
-              <p className="member-role">Strategic Liaison</p>
-              <p className="member-description">
+            <div className="card-hud">
+              <div className="member-avatar bg-blue">S</div>
+              <h3 className="card-title-hud">Steven Campbell</h3>
+              <p className="member-role-hud">Strategic Liaison</p>
+              <p className="card-description-hud">
                 Bridging vision and execution. Orchestrating partnerships and pathways
                 to global recognition.
               </p>
             </div>
 
-            <div className="triumvirate-card fade-in-up delay-3">
-              <div className="card-header">
-                <div className="member-initial">R</div>
-              </div>
-              <h3 className="member-name">Robert Boettcher</h3>
-              <p className="member-role">Creator & Innovator</p>
-              <p className="member-description">
+            <div className="card-hud">
+              <div className="member-avatar bg-red">R</div>
+              <h3 className="card-title-hud">Robert Boettcher</h3>
+              <p className="member-role-hud">Creator & Innovator</p>
+              <p className="card-description-hud">
                 The architect of revolution. From concept to reality,
                 engineering a sport for the next generation.
               </p>
@@ -225,83 +197,72 @@ const SlamboxLanding = () => {
         </div>
       </section>
 
-      {/* The Vision Section */}
-      <section className="vision-section">
-        <div className="section-container">
-          <div className="vision-content fade-in-up">
-            <Trophy className="section-icon" size={64} />
-            <h2 className="section-title">
-              The <span className="gold-text">Vision</span>
+      {/* Vision Section */}
+      <section className="vision-hud">
+        <div className="container-hud">
+          <div className="vision-content-hud">
+            <Trophy className="icon-blue" size={56} />
+            <h2 className="section-title-hud text-center">
+              The <span className="text-blue">Vision</span>
             </h2>
-            <p className="vision-text">
+            <p className="vision-lead-hud">
               Codifying the future of competitive sport.
             </p>
-            <p className="vision-description">
+            <p className="section-description-hud">
               Slambox isn't just a game—it's a movement. We're building the blueprint
               for a future Olympic sport. A discipline that demands athletic excellence,
               strategic mastery, and unwavering mental fortitude.
             </p>
-            <Button
+            <Button 
+              className={`btn-audio-red large ${isPlaying ? 'playing' : ''}`}
               onClick={toggleAudio}
-              className={`vision-audio-cta ${isPlaying ? 'playing' : ''}`}
-              size="lg"
             >
-              {isPlaying ? <VolumeX size={28} /> : <Volume2 size={28} />}
-              <span>{isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}</span>
+              {isPlaying ? <VolumeX size={24} /> : <Volume2 size={24} />}
+              {isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}
             </Button>
-            <div className="vision-stats">
-              <div className="stat-item">
-                <div className="stat-number">8ft</div>
-                <div className="stat-label">Professional Rim</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number">360°</div>
-                <div className="stat-label">Court Geometry</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number">∞</div>
-                <div className="stat-label">Possibilities</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-content fade-in-up">
-          <h2 className="cta-title">
-            Ready to Enter <span className="gold-text">The Arena?</span>
-          </h2>
-          <p className="cta-subtitle">
-            Join the next evolution in sport.
-          </p>
-          <div className="cta-buttons">
-            <Button className="cta-primary" size="lg">
-              Enter the Bunker
-            </Button>
-            <Button className="cta-secondary" size="lg" variant="outline">
-              LET'S GET IT IN
-            </Button>
+      <section className="cta-hud">
+        <div className="container-hud">
+          <div className="cta-content-hud">
+            <h2 className="cta-title-hud">
+              Ready to Enter The Arena?
+            </h2>
+            <p className="cta-subtitle-hud">
+              Join the next evolution in sport.
+            </p>
+            <div className="cta-buttons-hud">
+              <Button className="btn-primary-blue large">
+                Enter the Bunker
+              </Button>
+              <Button className="btn-secondary-red large">
+                LET'S GET IT IN
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="site-footer">
-        <div className="footer-content">
-          <div className="footer-logo">
-            <img
-              src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
-              alt="Slambox Shield"
-              className="footer-shield"
-            />
-            <span className="footer-text">SLAMBOX</span>
+      <footer className="footer-hud">
+        <div className="container-hud">
+          <div className="footer-content-hud">
+            <div className="footer-logo-group">
+              <img
+                src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
+                alt="Slambox Shield"
+                className="footer-logo-hud"
+              />
+              <span className="footer-brand-hud">SLAMBOX</span>
+            </div>
+            <p className="footer-tagline-hud">The Next Evolution of Basketball</p>
+            <p className="footer-copyright-hud">
+              © 2025 Slambox Championship. All rights reserved.
+            </p>
           </div>
-          <p className="footer-tagline">The Next Evolution of Basketball</p>
-          <p className="footer-copyright">
-            © 2025 Slambox. All rights reserved.
-          </p>
         </div>
       </footer>
     </div>

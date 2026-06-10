@@ -6,28 +6,16 @@ import { Shield, Target, Zap, Trophy, Volume2, VolumeX, Play } from 'lucide-reac
 const SlamboxLanding = () => {
   const audioRef = useRef(null); // Speaker/Voiceover
   const musicRef = useRef(null); // Background Music
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isNarrating, setIsNarrating] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
 
   const handleEnterBunker = () => {
-    // Start background music (looping, subtle cinematic layer)
+    // Start ONLY background music (looping, very subtle backdrop at 8%)
     if (musicRef.current) {
-      musicRef.current.volume = 0.15;
+      musicRef.current.volume = 0.08;
       musicRef.current.play()
         .catch(err => {
           console.log('Music play error:', err);
-        });
-    }
-    
-    // Start speaker/voiceover (no loop, full volume)
-    if (audioRef.current) {
-      audioRef.current.volume = 1.0;
-      audioRef.current.play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch(err => {
-          console.log('Audio play error:', err);
         });
     }
     
@@ -35,16 +23,37 @@ const SlamboxLanding = () => {
     setShowSplash(false);
   };
 
-  const toggleAudio = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        audioRef.current.play();
-        setIsPlaying(true);
+  const toggleNarration = () => {
+    if (!isNarrating) {
+      // Pause background music
+      if (musicRef.current) {
+        musicRef.current.pause();
+      }
+      
+      // Start speech overdub at full volume
+      if (audioRef.current) {
+        audioRef.current.volume = 1.0;
+        audioRef.current.play()
+          .then(() => {
+            setIsNarrating(true);
+          })
+          .catch(err => {
+            console.log('Speech play error:', err);
+            // Resume music if speech fails
+            if (musicRef.current) {
+              musicRef.current.play();
+            }
+          });
       }
     }
+  };
+
+  const handleSpeechEnd = () => {
+    // Resume background music when speech ends
+    if (musicRef.current) {
+      musicRef.current.play();
+    }
+    setIsNarrating(false);
   };
 
   return (
@@ -81,7 +90,7 @@ const SlamboxLanding = () => {
       <audio 
         ref={audioRef} 
         src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/daf8489b969f4a4ab139792d5e35986e_slambox_pitch_v2_1_corrected.mp3"
-        onEnded={() => setIsPlaying(false)}
+        onEnded={handleSpeechEnd}
       />
 
       {/* Header */}
@@ -131,11 +140,12 @@ const SlamboxLanding = () => {
               Enter the Bunker
             </Button>
             <Button 
-              className={`btn-audio-red ${isPlaying ? 'playing' : ''}`}
-              onClick={toggleAudio}
+              className={`btn-audio-red ${isNarrating ? 'narrating' : ''}`}
+              onClick={toggleNarration}
+              disabled={isNarrating}
             >
-              {isPlaying ? <VolumeX size={20} /> : <Volume2 size={20} />}
-              {isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}
+              {isNarrating ? <VolumeX size={20} /> : <Volume2 size={20} />}
+              {isNarrating ? 'NARRATING...' : 'HEAR THE VISION'}
             </Button>
           </div>
         </div>
@@ -270,11 +280,12 @@ const SlamboxLanding = () => {
               strategic mastery, and unwavering mental fortitude.
             </p>
             <Button 
-              className={`btn-audio-red large ${isPlaying ? 'playing' : ''}`}
-              onClick={toggleAudio}
+              className={`btn-audio-red large ${isNarrating ? 'narrating' : ''}`}
+              onClick={toggleNarration}
+              disabled={isNarrating}
             >
-              {isPlaying ? <VolumeX size={24} /> : <Volume2 size={24} />}
-              {isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}
+              {isNarrating ? <VolumeX size={24} /> : <Volume2 size={24} />}
+              {isNarrating ? 'NARRATING...' : 'HEAR THE VISION'}
             </Button>
           </div>
         </div>

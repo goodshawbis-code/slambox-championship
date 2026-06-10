@@ -550,6 +550,14 @@
   background: #B91C1C;
 }
 
+.btn-audio-red.narrating {
+  background: var(--red-primary);
+  color: var(--white);
+  animation: none;
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
 .btn-audio-red.large,
 .btn-primary-blue.large,
 .btn-secondary-red.large {

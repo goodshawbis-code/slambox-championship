@@ -10,9 +10,9 @@ const SlamboxLanding = () => {
   const [showSplash, setShowSplash] = useState(true);
 
   const handleEnterBunker = () => {
-    // Start background music (looping, lower volume)
+    // Start background music (looping, subtle cinematic layer)
     if (musicRef.current) {
-      musicRef.current.volume = 0.4;
+      musicRef.current.volume = 0.15;
       musicRef.current.play()
         .catch(err => {
           console.log('Music play error:', err);

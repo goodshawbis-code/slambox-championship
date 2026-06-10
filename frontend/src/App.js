@@ -4,12 +4,22 @@ import { Button } from './components/ui/button';
 import { Shield, Target, Zap, Trophy, Volume2, VolumeX, Play } from 'lucide-react';
 
 const SlamboxLanding = () => {
-  const audioRef = useRef(null);
+  const audioRef = useRef(null); // Speaker/Voiceover
+  const musicRef = useRef(null); // Background Music
   const [isPlaying, setIsPlaying] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
 
   const handleEnterBunker = () => {
-    // Start audio
+    // Start background music (looping, lower volume)
+    if (musicRef.current) {
+      musicRef.current.volume = 0.4;
+      musicRef.current.play()
+        .catch(err => {
+          console.log('Music play error:', err);
+        });
+    }
+    
+    // Start speaker/voiceover (no loop, full volume)
     if (audioRef.current) {
       audioRef.current.volume = 1.0;
       audioRef.current.play()
@@ -20,6 +30,7 @@ const SlamboxLanding = () => {
           console.log('Audio play error:', err);
         });
     }
+    
     // Hide splash with fade
     setShowSplash(false);
   };
@@ -58,12 +69,19 @@ const SlamboxLanding = () => {
         </div>
       )}
 
-      {/* Audio Element */}
+      {/* Audio Elements */}
+      {/* Background Music - Looping at 0.4 volume */}
+      <audio 
+        ref={musicRef} 
+        src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/7474ad00808c4319b5caf9ccb00cded5_slam-box%20banger.mp3"
+        loop
+      />
+      
+      {/* Speaker/Voiceover - No loop, full volume */}
       <audio 
         ref={audioRef} 
         src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/daf8489b969f4a4ab139792d5e35986e_slambox_pitch_v2_1_corrected.mp3"
         onEnded={() => setIsPlaying(false)}
-        loop
       />
 
       {/* Header */}

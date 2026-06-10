@@ -6,6 +6,23 @@ import { Shield, Target, Zap, Trophy, Volume2, VolumeX, Play } from 'lucide-reac
 const SlamboxLanding = () => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleEnterBunker = () => {
+    // Start audio
+    if (audioRef.current) {
+      audioRef.current.volume = 1.0;
+      audioRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(err => {
+          console.log('Audio play error:', err);
+        });
+    }
+    // Hide splash with fade
+    setShowSplash(false);
+  };
 
   const toggleAudio = () => {
     if (audioRef.current) {
@@ -21,11 +38,32 @@ const SlamboxLanding = () => {
 
   return (
     <div className="slambox-hud">
+      {/* Splash Overlay */}
+      {showSplash && (
+        <div className="splash-overlay">
+          <div className="splash-content">
+            <img
+              src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
+              alt="Slambox Shield"
+              className="splash-logo"
+            />
+            <h1 className="splash-title">SLAMBOX CHAMPIONSHIP</h1>
+            <Button 
+              className="splash-button"
+              onClick={handleEnterBunker}
+            >
+              STRIKE TO ENTER THE BUNKER
+            </Button>
+          </div>
+        </div>
+      )}
+
       {/* Audio Element */}
       <audio 
         ref={audioRef} 
         src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/daf8489b969f4a4ab139792d5e35986e_slambox_pitch_v2_1_corrected.mp3"
         onEnded={() => setIsPlaying(false)}
+        loop
       />
 
       {/* Header */}

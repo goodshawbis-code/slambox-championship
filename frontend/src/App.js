@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 import { Button } from './components/ui/button';
-import { Shield, Target, Zap, Trophy, ChevronDown } from 'lucide-react';
+import { Shield, Target, Zap, Trophy, ChevronDown, Volume2, VolumeX } from 'lucide-react';
 
 const SlamboxLanding = () => {
   const [scrollY, setScrollY] = useState(0);
   const videoRef = useRef(null);
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -13,12 +15,32 @@ const SlamboxLanding = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
   const scrollToContent = () => {
     document.getElementById('lead-section').scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="slambox-container">
+      {/* Audio Element */}
+      <audio 
+        ref={audioRef} 
+        src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/daf8489b969f4a4ab139792d5e35986e_slambox_pitch_v2_1_corrected.mp3"
+        onEnded={() => setIsPlaying(false)}
+        volume={0.7}
+      />
+      
       {/* Hero Section with Video Background */}
       <section className="hero-section">
         <div className="video-background">
@@ -57,14 +79,25 @@ const SlamboxLanding = () => {
               <span className="title-line">OF BASKETBALL</span>
             </h1>
             <p className="hero-subtitle">High-flying. Relentless. Revolutionary.</p>
-            <Button
-              onClick={scrollToContent}
-              className="hero-cta"
-              size="lg"
-            >
-              <ChevronDown className="bounce-icon" />
-              <span>Discover The Game</span>
-            </Button>
+            <div className="hero-actions">
+              <Button
+                onClick={scrollToContent}
+                className="hero-cta"
+                size="lg"
+              >
+                <ChevronDown className="bounce-icon" />
+                <span>Discover The Game</span>
+              </Button>
+              <Button
+                onClick={toggleAudio}
+                className={`audio-cta ${isPlaying ? 'playing' : ''}`}
+                size="lg"
+                variant="outline"
+              >
+                {isPlaying ? <VolumeX size={24} /> : <Volume2 size={24} />}
+                <span>{isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}</span>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -208,6 +241,14 @@ const SlamboxLanding = () => {
               for a future Olympic sport. A discipline that demands athletic excellence,
               strategic mastery, and unwavering mental fortitude.
             </p>
+            <Button
+              onClick={toggleAudio}
+              className={`vision-audio-cta ${isPlaying ? 'playing' : ''}`}
+              size="lg"
+            >
+              {isPlaying ? <VolumeX size={28} /> : <Volume2 size={28} />}
+              <span>{isPlaying ? 'PAUSE THE VISION' : 'HEAR THE VISION'}</span>
+            </Button>
             <div className="vision-stats">
               <div className="stat-item">
                 <div className="stat-number">8ft</div>

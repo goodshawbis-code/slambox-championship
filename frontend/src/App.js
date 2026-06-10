@@ -272,7 +272,7 @@ const SlamboxLanding = () => {
               ENTER THE BUNKER
             </Button>
             <Button className="cta-secondary-bunker" size="lg" variant="outline">
-              JOIN THE VANGUARD
+              JOIN THE MOVEMENT
             </Button>
           </div>
         </div>

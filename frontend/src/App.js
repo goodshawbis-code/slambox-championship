@@ -135,10 +135,6 @@ const SlamboxLanding = () => {
           </h1>
           <p className="hero-subtitle-hud">High-flying. Relentless. Revolutionary.</p>
           <div className="hero-buttons-hud">
-            <Button className="btn-primary-blue">
-              <Play size={20} />
-              Enter the Bunker
-            </Button>
             <Button 
               className={`btn-audio-red ${isNarrating ? 'narrating' : ''}`}
               onClick={toggleNarration}

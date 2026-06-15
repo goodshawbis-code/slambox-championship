@@ -63,8 +63,8 @@ const SlamboxLanding = () => {
         <div className="splash-overlay">
           <div className="splash-content">
             <img
-              src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
-              alt="Slambox Shield"
+              src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
+              alt="Slambox Logo"
               className="splash-logo"
             />
             <h1 className="splash-title">SLAMBOX CHAMPIONSHIP</h1>
@@ -98,8 +98,8 @@ const SlamboxLanding = () => {
         <div className="header-container">
           <div className="logo-group">
             <img
-              src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
-              alt="Slambox Shield"
+              src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
+              alt="Slambox Logo"
               className="header-logo"
             />
             <span className="header-title">SLAMBOX</span>
@@ -126,8 +126,8 @@ const SlamboxLanding = () => {
         </div>
         <div className="hero-content-hud">
           <img
-            src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
-            alt="Slambox Shield"
+            src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
+            alt="Slambox Logo"
             className="hero-logo-large"
           />
           <h1 className="hero-title-hud">
@@ -165,6 +165,7 @@ const SlamboxLanding = () => {
 
       {/* Rules Section */}
       <section className="rules-hud">
+        <div className="graffiti-bg"></div>
         <div className="container-hud">
           <h2 className="section-title-hud text-center">
             Rules of <span className="text-blue">Gameplay</span>
@@ -261,6 +262,7 @@ const SlamboxLanding = () => {
 
       {/* Vision Section */}
       <section className="vision-hud">
+        <div className="graffiti-bg"></div>
         <div className="container-hud">
           <div className="vision-content-hud">
             <Trophy className="icon-blue" size={56} />
@@ -291,6 +293,11 @@ const SlamboxLanding = () => {
       <section className="cta-hud">
         <div className="container-hud">
           <div className="cta-content-hud">
+            <img
+              src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/04a7e26a7b8946ecbe8dd0b5ddf76adc_c78bf1e69bf9f0429723f17cb51be9be0fa6d0a8356edbc2b6403d93c9a596e4.png"
+              alt="The Game Has Changed"
+              className="cta-logo-variant"
+            />
             <h2 className="cta-title-hud">
               Ready to Enter The Arena?
             </h2>
@@ -315,8 +322,8 @@ const SlamboxLanding = () => {
           <div className="footer-content-hud">
             <div className="footer-logo-group">
               <img
-                src="https://static.prod-images.emergentagent.com/jobs/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/images/7350e834fb6d95194d53b5c0314939006a2ddf64940c9cc3c25b907dd1f35a1f.png"
-                alt="Slambox Shield"
+                src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
+                alt="Slambox Logo"
                 className="footer-logo-hud"
               />
               <span className="footer-brand-hud">SLAMBOX</span>

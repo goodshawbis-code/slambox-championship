@@ -317,6 +317,30 @@
 .rules-hud {
   padding: 5rem 0;
   background: var(--gray-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.graffiti-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-image: url('https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/5125d981049e4eea9b9d368edf39c9af_815cc3ab3a31c2a5bb7f26e3505d42cb14d73d12ddd7df577db607648ea150e9.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rules-hud .container-hud,
+.vision-hud .container-hud {
+  position: relative;
+  z-index: 1;
 }
 
 /* Cards Grid */
@@ -419,6 +443,8 @@
 .vision-hud {
   padding: 5rem 0;
   background: var(--gray-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .vision-content-hud {
@@ -439,6 +465,13 @@
 .cta-hud {
   padding: 5rem 0;
   background: var(--white);
+}
+
+.cta-logo-variant {
+  max-width: clamp(300px, 60vw, 600px);
+  height: auto;
+  margin: 0 auto 2rem;
+  display: block;
 }
 
 .cta-content-hud {

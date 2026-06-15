@@ -147,7 +147,7 @@
 }
 
 .header-logo {
-  height: 36px;
+  height: 50px;
   width: auto;
 }
 
@@ -328,11 +328,11 @@
   transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
-  background-image: url('https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/5125d981049e4eea9b9d368edf39c9af_815cc3ab3a31c2a5bb7f26e3505d42cb14d73d12ddd7df577db607648ea150e9.png');
+  background-image: url('https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/04a7e26a7b8946ecbe8dd0b5ddf76adc_c78bf1e69bf9f0429723f17cb51be9be0fa6d0a8356edbc2b6403d93c9a596e4.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.12;
+  opacity: 0.08;
   pointer-events: none;
   z-index: 0;
 }

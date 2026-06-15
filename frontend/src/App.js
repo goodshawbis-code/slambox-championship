@@ -63,8 +63,8 @@ const SlamboxLanding = () => {
         <div className="splash-overlay">
           <div className="splash-content">
             <img
-              src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
-              alt="Slambox Logo"
+              src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/04a7e26a7b8946ecbe8dd0b5ddf76adc_c78bf1e69bf9f0429723f17cb51be9be0fa6d0a8356edbc2b6403d93c9a596e4.png"
+              alt="Slambox - The Game Has Changed"
               className="splash-logo"
             />
             <h1 className="splash-title">SLAMBOX CHAMPIONSHIP</h1>
@@ -98,11 +98,10 @@ const SlamboxLanding = () => {
         <div className="header-container">
           <div className="logo-group">
             <img
-              src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
-              alt="Slambox Logo"
+              src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/04a7e26a7b8946ecbe8dd0b5ddf76adc_c78bf1e69bf9f0429723f17cb51be9be0fa6d0a8356edbc2b6403d93c9a596e4.png"
+              alt="Slambox - The Game Has Changed"
               className="header-logo"
             />
-            <span className="header-title">SLAMBOX</span>
           </div>
         </div>
       </header>
@@ -126,8 +125,8 @@ const SlamboxLanding = () => {
         </div>
         <div className="hero-content-hud">
           <img
-            src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
-            alt="Slambox Logo"
+            src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/04a7e26a7b8946ecbe8dd0b5ddf76adc_c78bf1e69bf9f0429723f17cb51be9be0fa6d0a8356edbc2b6403d93c9a596e4.png"
+            alt="Slambox - The Game Has Changed"
             className="hero-logo-large"
           />
           <h1 className="hero-title-hud">
@@ -322,11 +321,10 @@ const SlamboxLanding = () => {
           <div className="footer-content-hud">
             <div className="footer-logo-group">
               <img
-                src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/c7b7812d538447b390cc6b0e4bf86378_dee14cd914c505c58ee8318b9b50b1411b8295b769f77b0953e558c2e4b2931a.png"
-                alt="Slambox Logo"
+                src="https://customer-assets.emergentagent.com/wingman/e3acf488-cd03-4dd4-ac4f-dd98f8681e9e/attachments/04a7e26a7b8946ecbe8dd0b5ddf76adc_c78bf1e69bf9f0429723f17cb51be9be0fa6d0a8356edbc2b6403d93c9a596e4.png"
+                alt="Slambox - The Game Has Changed"
                 className="footer-logo-hud"
               />
-              <span className="footer-brand-hud">SLAMBOX</span>
             </div>
             <p className="footer-tagline-hud">The Next Evolution of Basketball</p>
             <p className="footer-copyright-hud">
